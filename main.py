@@ -946,7 +946,7 @@ async def txt_handler(bot: Client, m: Message):
         b_name = raw_text0
     
 
-    await editable.edit("__**Enter resolution or Video Quality (`144`, `240`, `360`, `480`, `720`, `1080`)**__")
+    await editable.edit("__**Enter resolution or Video Quality (`144`, `240`, `360`, `480`, `720`, `1080`, `2000`)**__")
     try:
         input2: Message = await bot.listen(editable.chat.id, timeout=20)
         raw_text2 = input2.text
@@ -967,6 +967,8 @@ async def txt_handler(bot: Client, m: Message):
             res = "1280x720"
         elif raw_text2 == "1080":
             res = "1920x1080" 
+        elif raw_text2 == "2000":
+            res = "2560×1440"
         else: 
             res = "UN"
     except Exception:
@@ -1406,7 +1408,7 @@ async def text_handler(bot: Client, m: Message):
         quality = "360p"
         res = "640x360"
     else:
-        await editable.edit(f"╭━━━━❰ᴇɴᴛᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴ❱━━➣ \n┣━━⪼ send `144`  for 144p\n┣━━⪼ send `240`  for 240p\n┣━━⪼ send `360`  for 360p\n┣━━⪼ send `480`  for 480p\n┣━━⪼ send `720`  for 720p\n┣━━⪼ send `1080` for 1080p\n╰━━⌈⚡[🦋`{CREDIT}`🦋]⚡⌋━━➣ ")
+        await editable.edit(f"╭━━━━❰ᴇɴᴛᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴ❱━━➣ \n┣━━⪼ send `144`  for 144p\n┣━━⪼ send `240`  for 240p\n┣━━⪼ send `360`  for 360p\n┣━━⪼ send `480`  for 480p\n┣━━⪼ send `720`  for 720p\n┣━━⪼ send `1080` for 1080p\n┣━━⪼ send `2000`  for 2K╰━━⌈⚡[🦋`{CREDIT}`🦋]⚡⌋━━➣ ")
         input2: Message = await bot.listen(editable.chat.id, filters=filters.text & filters.user(m.from_user.id))
         raw_text2 = input2.text
         quality = f"{raw_text2}p"
@@ -1424,6 +1426,8 @@ async def text_handler(bot: Client, m: Message):
                 res = "1280x720"
             elif raw_text2 == "1080":
                 res = "1920x1080" 
+            elif raw_text2 == "2000":
+            res = "2560×1440"
             else: 
                 res = "UN"
         except Exception:
@@ -1462,14 +1466,14 @@ async def text_handler(bot: Client, m: Message):
 
             elif "https://cpvod.testbook.com/" in url or "classplusapp.com/drm/" in url:
                 url = url.replace("https://cpvod.testbook.com/","https://media-cdn.classplusapp.com/drm/")
-                url = f"https://cpapi-rjbs.onrender.com/extract_keys?url={url}@bots_updatee&user_id={user_id}"
+                url = f"https://cpapi-ytas.onrender.com/extract_keys?url={url}@bots_updatee&user_id={user_id}"
                 #url = f"https://scammer-keys.vercel.app/api?url={url}&token={cptoken}&auth=@scammer_botxz1"
                 mpd, keys = helper.get_mps_and_keys(url)
                 url = mpd
                 keys_string = " ".join([f"--key {key}" for key in keys])
 
             elif "classplusapp" in url:
-                signed_api = f"https://cpapi-rjbs.onrender.com/extract_keys?url={url}@bots_updatee&user_id={user_id}"
+                signed_api = f"https://cpapi-ytas.onrender.com/extract_keys?url={url}@bots_updatee&user_id={user_id}"
                 response = requests.get(signed_api, timeout=20)
                 #url = response.text.strip()
                 url = response.json()['url']  
